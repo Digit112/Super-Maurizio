@@ -12,7 +12,6 @@ class Sprite(pg.sprite.Sprite):
 		super().__init__()
 
 		self.sprite_loc =  {
-
 			"brick_ground": (0,0,479,479)
 		}
 
