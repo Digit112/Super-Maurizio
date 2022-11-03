@@ -11,7 +11,6 @@ class SpriteSheet:
 
 		rect = pg.Rect(rectangle)
 		image = pg.Surface(rect.size, pg.SRCALPHA).convert_alpha()
-
 		image.blit(self.sheet, (0,0), rect)
 
 		return image.convert_alpha()

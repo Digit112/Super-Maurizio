@@ -3,7 +3,7 @@ import sys
 from spritesheet import SpriteSheet
 
 
-ss = SpriteSheet("supermauriziospritesheetterrain01large.png")
+ss = SpriteSheet("assets/img/supermauriziospritesheetterrain01large.png")
 
 class Sprite(pg.sprite.Sprite):
 
@@ -12,7 +12,8 @@ class Sprite(pg.sprite.Sprite):
 		super().__init__()
 
 		self.sprite_loc =  {
-			"brick_ground": (0,0,479,479)
+			"brick_ground": (0,640,479,479),
+			"question_blocks": (0,0,479,479)
 		}
 
 		self.type = sprite_name
