@@ -13,7 +13,9 @@ class Sprite(pg.sprite.Sprite):
 
 		self.sprite_loc =  {
 			"brick_ground": (0,640,479,479),
-			"question_blocks": (0,0,479,479)
+			"brick_block": (640, 800, 160,160),
+			"question_blocks": (0,0,479,479),
+			"question_block": (640,160,160,160)
 		}
 
 		self.type = sprite_name

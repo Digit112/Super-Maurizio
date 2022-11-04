@@ -73,10 +73,11 @@ class Character(pg.sprite.Sprite):
 			self.long_jump = False
 
 
-		if left:
+		if left and self.rect.x > 0:
 
 			if self.face != "l":
 
+				self.rect.x += self.walk_momentum
 				self.face = "l"
 				self.frames = character_nohat_reverse
 
@@ -98,7 +99,7 @@ class Character(pg.sprite.Sprite):
 		if right:
 
 			if self.face != "r":
-
+				self.rect.x -= self.walk_momentum
 				self.face = "r"
 				self.frames = character_nohat
 
@@ -125,7 +126,7 @@ class Character(pg.sprite.Sprite):
 
 		self.is_moving = right and self.scrolling
 
-			
+
 	def animate(self):
 
 		if self.jumping:
@@ -141,6 +142,14 @@ class Character(pg.sprite.Sprite):
 
 			self.frame_count += 1
 
+	def collide_block(self, hit):
+
+		if self.rect.top <= hit.bottom:
+			self.v -= 5
+		if self.rect.left >= hit.right:
+			self.x = hit.right
+			return
+			
 	def jump(self):
 
 		if self.jumping:
@@ -157,7 +166,6 @@ class Character(pg.sprite.Sprite):
 				self.v -= 0.3
 			else:
 				self.v -= 0.6
-
 
 			if self.rect.bottom > 900:
 
@@ -182,26 +190,6 @@ class Character(pg.sprite.Sprite):
 			# 	self.jump_count = 15
 			# 	self.jump_momentum = 0.6
 
-
-
-	def gravity(self, collided_with_ground):
-
-		#self.mask = pg.mask.from_surface(self.image)
-
-		if not collided_with_ground:
-			
-			pass
-			
-		# 	if self.rect.y + 3 + self.fall_momentum < 899 and not self.grounded:
-
-		# 		self.rect.y += 3 + self.fall_momentum
-		# 		self.fall_momentum += 0.4
-
-		# else:
-
-		# 	self.grounded = True
-		# 	self.rect.bottom = 900
-		# 	self.fall_momentum = 0.3
 
 
 
